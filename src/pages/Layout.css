@@ -1,0 +1,24 @@
+/* Admin shell: sidebar + main */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f3f4f6;
+}
+
+/* Main area */
+.admin-main {
+  flex: 1;
+  padding: 1.5rem 1.25rem;
+}
+
+.admin-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* On small screens you can later add a toggle for sidebar if needed */
+@media (max-width: 768px) {
+  .admin-main {
+    padding: 1rem 0.75rem;
+  }
+}

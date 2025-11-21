@@ -1,0 +1,179 @@
+/* src/pages/ManageBooking.css */
+
+.booking-admin-page {
+  padding: 0.5rem 0 1.5rem;
+}
+
+.booking-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.booking-admin-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+.booking-admin-header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.booking-admin-filter label {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.booking-admin-filter select {
+  margin-left: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.8rem;
+  background: #f9fafb;
+}
+
+.booking-admin-error {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  color: #b91c1c;
+}
+
+.booking-admin-empty {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* table */
+
+.booking-table-wrapper {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.booking-table thead {
+  background: #f9fafb;
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.booking-table th {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.booking-car-cell,
+.booking-customer-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.booking-car-name,
+.booking-customer-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.booking-car-plate,
+.booking-customer-phone {
+  color: #6b7280;
+}
+
+/* status badge */
+
+.booking-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.booking-status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.booking-status-confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.booking-status-completed {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.booking-status-cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* status select */
+
+.booking-status-select {
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  background: #f9fafb;
+}
+
+/* delete button */
+
+.booking-delete-btn {
+  border-radius: 999px;
+  border: 1px solid #fecaca;
+  background: #ffffff;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #b91c1c;
+  cursor: pointer;
+}
+
+.booking-delete-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #7f1d1d;
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+  .booking-table {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .booking-admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .booking-table-wrapper {
+    border-radius: 0.6rem;
+  }
+}
