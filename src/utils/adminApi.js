@@ -1,5 +1,5 @@
 // src/utils/adminApi.js
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://kasuper-server.onrender.com";
 
 /**
  * Wrapper around fetch for ADMIN calls.

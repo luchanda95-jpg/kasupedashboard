@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://kasuper-server.onrender.com"; // make sure this URL is correct
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -27,6 +27,9 @@ function AdminLogin() {
       return;
     }
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s timeout
+
     try {
       setSubmitting(true);
 
@@ -34,22 +37,35 @@ function AdminLogin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: cleanEmail, password: cleanPass }),
+        signal: controller.signal,
       });
 
       if (!res.ok) {
-        const errData = await res.json().catch(() => null);
-        throw new Error(errData?.message || "Login failed");
+        let msg = "Login failed";
+        try {
+          const errData = await res.json();
+          if (errData?.message) msg = errData.message;
+        } catch {
+          // body not JSON
+        }
+        throw new Error(msg);
       }
 
       const data = await res.json();
-      // data: { token, user: { id, email, name, role } }
+      if (!data?.token) throw new Error("Server did not return a token.");
 
       login(data.token, data.user);
       navigate("/admin", { replace: true });
     } catch (err) {
-      console.error(err);
-      setErrorMsg(err.message || "Login failed");
+      if (err.name === "AbortError") {
+        setErrorMsg(
+          "Server is taking too long to respond. If you’re using Render free tier, the server may be sleeping."
+        );
+      } else {
+        setErrorMsg(err.message || "Login failed");
+      }
     } finally {
+      clearTimeout(timeoutId);
       setSubmitting(false);
     }
   };
@@ -71,7 +87,8 @@ function AdminLogin() {
               type="email"
               placeholder="kasupecarhire@gmail.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value.toLowerCase())}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
             />
           </div>
 
@@ -82,6 +99,7 @@ function AdminLogin() {
               placeholder="••••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
             />
           </div>
 

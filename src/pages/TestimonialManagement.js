@@ -4,7 +4,7 @@ import "./TestimonialManagement.css";
 import { adminFetch } from "../utils/adminApi";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://kasuper-server.onrender.com";
 
 const emptyForm = {
   name: "",
