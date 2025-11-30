@@ -1,5 +1,3 @@
-/* === Base sidebar (desktop) === */
-
 .admin-sidebar {
   width: 230px;
   min-height: 100vh;
@@ -10,6 +8,8 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+/* ----- Logo ----- */
 
 .admin-sidebar-logo {
   display: flex;
@@ -29,6 +29,8 @@
   font-weight: 600;
   color: #111827;
 }
+
+/* ----- Nav ----- */
 
 .admin-sidebar-nav {
   margin-top: 0.6rem;
@@ -64,6 +66,8 @@
   height: 16px;
 }
 
+/* ----- Logout button ----- */
+
 .admin-logout-btn {
   margin-top: auto;
   margin-bottom: 0.5rem;
@@ -82,82 +86,63 @@
   background: #fee2e2;
 }
 
-/* === Hamburger button (hidden on desktop) === */
-
-.admin-sidebar-toggle {
-  display: none; /* shown only on small screens */
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 50;
-  width: 34px;
-  height: 30px;
-  border-radius: 0.4rem;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  padding: 6px 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
-}
-
-.admin-sidebar-toggle span {
-  display: block;
-  height: 2px;
-  border-radius: 999px;
-  background: #111827;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.admin-sidebar-toggle--open span:nth-child(1) {
-  transform: translateY(5px) rotate(45deg);
-}
-
-.admin-sidebar-toggle--open span:nth-child(2) {
-  opacity: 0;
-}
-
-.admin-sidebar-toggle--open span:nth-child(3) {
-  transform: translateY(-5px) rotate(-45deg);
-}
-
-/* Backdrop when sidebar is open on mobile */
-.admin-sidebar-backdrop {
-  display: none;
-}
-
-/* === Mobile styles (drawer) === */
+/* ===========================
+   Mobile behaviour (≤ 768px)
+   =========================== */
 
 @media (max-width: 768px) {
-  /* Show hamburger on mobile */
-  .admin-sidebar-toggle {
-    display: flex;
-  }
-
-  .admin-sidebar-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.45);
-    z-index: 40;
-  }
-
   .admin-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 240px;
-    max-width: 80%;
-    z-index: 45;
+    width: 230px;
+    /* hidden by default */
     transform: translateX(-100%);
     transition: transform 0.2s ease-out;
-    box-shadow: 8px 0 24px rgba(15, 23, 42, 0.25);
+    z-index: 40;
+    background: #ffffff;
   }
 
-  .admin-sidebar--open {
+  .admin-sidebar.admin-sidebar--open {
     transform: translateX(0);
   }
+}
+
+/* ===========================
+   Floating hamburger button
+   =========================== */
+
+.admin-sidebar-toggle {
+  position: fixed;
+  /* bottom-right of screen */
+  right: 1rem;
+  bottom: 1rem;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+  z-index: 50;
+}
+
+/* hide the floating button on desktop */
+@media (min-width: 769px) {
+  .admin-sidebar-toggle {
+    display: none;
+  }
+}
+
+.admin-sidebar-toggle-icon {
+  line-height: 1;
 }

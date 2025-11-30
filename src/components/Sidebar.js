@@ -1,6 +1,5 @@
-// src/components/Sidebar.js
-import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import { assets } from "../assets/assets";
 
@@ -21,48 +20,32 @@ const navItems = [
 
 function Sidebar() {
   const navigate = useNavigate();
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("kasupe_admin_token");
     localStorage.removeItem("kasupe_admin_name");
     localStorage.removeItem("kasupe_admin_email");
-    setIsMobileOpen(false);
     navigate("/admin/login", { replace: true });
   };
 
-  const toggleMobile = () => setIsMobileOpen((prev) => !prev);
-  const closeMobile = () => setIsMobileOpen(false);
+  const toggleSidebar = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleNavClick = () => {
+    // Close sidebar on mobile after clicking a link
+    if (window.innerWidth <= 768) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <>
-      {/* 🔔 Hamburger button (mobile only, via CSS) */}
-      <button
-        type="button"
-        className={`admin-sidebar-toggle ${
-          isMobileOpen ? "admin-sidebar-toggle--open" : ""
-        }`}
-        onClick={toggleMobile}
-        aria-label="Toggle admin menu"
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-
-      {/* Dark backdrop on mobile when menu is open */}
-      {isMobileOpen && (
-        <div
-          className="admin-sidebar-backdrop"
-          onClick={closeMobile}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Sidebar itself */}
+      {/* Sidebar */}
       <aside
         className={`admin-sidebar ${
-          isMobileOpen ? "admin-sidebar--open" : ""
+          isOpen ? "admin-sidebar--open" : ""
         }`}
       >
         <div className="admin-sidebar-logo">
@@ -87,7 +70,7 @@ function Sidebar() {
                   ? "admin-nav-link admin-nav-link--active"
                   : "admin-nav-link"
               }
-              onClick={closeMobile} // close drawer after choosing on mobile
+              onClick={handleNavClick}
             >
               {item.icon && (
                 <img src={item.icon} alt="" className="admin-nav-icon" />
@@ -97,10 +80,21 @@ function Sidebar() {
           ))}
         </nav>
 
-        <button className="admin-logout-btn" onClick={handleLogout}>
+        <button className="admin-logout-btn" onClick={() => { handleLogout(); handleNavClick(); }}>
           Logout
         </button>
       </aside>
+
+      {/* Floating hamburger button (mobile only, via CSS) */}
+      <button
+        type="button"
+        className="admin-sidebar-toggle"
+        onClick={toggleSidebar}
+      >
+        <span className="admin-sidebar-toggle-icon">
+          {isOpen ? "×" : "☰"}
+        </span>
+      </button>
     </>
   );
 }
