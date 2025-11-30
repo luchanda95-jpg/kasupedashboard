@@ -1,11 +1,22 @@
+// src/admin/CarManagement.js
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CarManagement.css";
 import { useAdminAuth } from "../context/AdminAuthContext";
 import { adminFetch } from "../utils/adminApi";
 
+const API_BASE = "https://kasuper-server.onrender.com";
+
 const placeholderImg =
   "https://via.placeholder.com/120x80?text=Kasupe+Car";
+
+const getCarImageUrl = (car) => {
+  if (!car.image) return placeholderImg;
+  if (typeof car.image === "string" && car.image.startsWith("http")) {
+    return car.image;
+  }
+  return `${API_BASE}${car.image}`;
+};
 
 function CarManagement() {
   const navigate = useNavigate();
@@ -81,9 +92,7 @@ function CarManagement() {
 
       const updated = await res.json();
 
-      setCars((prev) =>
-        prev.map((c) => (c._id === car._id ? updated : c))
-      );
+      setCars((prev) => prev.map((c) => (c._id === car._id ? updated : c)));
     } catch (err) {
       console.error(err);
       setErrorMsg(
@@ -172,7 +181,7 @@ function CarManagement() {
             </thead>
             <tbody>
               {cars.map((car) => {
-                const img = car.image || placeholderImg;
+                const img = getCarImageUrl(car);
                 const isBusy = updatingId === car._id || deletingId === car._id;
 
                 return (
