@@ -1,3 +1,5 @@
+/* === Base sidebar (desktop) === */
+
 .admin-sidebar {
   width: 230px;
   min-height: 100vh;
@@ -80,14 +82,82 @@
   background: #fee2e2;
 }
 
-/* Responsive: collapse sidebar on small screens */
+/* === Hamburger button (hidden on desktop) === */
+
+.admin-sidebar-toggle {
+  display: none; /* shown only on small screens */
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 50;
+  width: 34px;
+  height: 30px;
+  border-radius: 0.4rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 6px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+}
+
+.admin-sidebar-toggle span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: #111827;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.admin-sidebar-toggle--open span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.admin-sidebar-toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.admin-sidebar-toggle--open span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Backdrop when sidebar is open on mobile */
+.admin-sidebar-backdrop {
+  display: none;
+}
+
+/* === Mobile styles (drawer) === */
+
 @media (max-width: 768px) {
+  /* Show hamburger on mobile */
+  .admin-sidebar-toggle {
+    display: flex;
+  }
+
+  .admin-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 40;
+  }
+
   .admin-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    width: 240px;
+    max-width: 80%;
+    z-index: 45;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-out;
+    box-shadow: 8px 0 24px rgba(15, 23, 42, 0.25);
+  }
+
+  .admin-sidebar--open {
     transform: translateX(0);
-    z-index: 40;
   }
 }
