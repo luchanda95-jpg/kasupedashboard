@@ -11,6 +11,7 @@ import CarManagement from "./pages/CarManagement";
 import Settings from "./pages/Settings";
 import TestimonialManagement from "./pages/TestimonialManagement";
 import NewsletterManagement from "./pages/NewsletterManagement";
+import FooterInfoManagement from "./pages/FooterInfoManagement"; // 👈 NEW
 
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -47,6 +48,9 @@ function App() {
 
               {/* /admin/newsletter */}
               <Route path="newsletter" element={<NewsletterManagement />} />
+
+              {/* 👇 NEW: /admin/footer-info */}
+              <Route path="footer-info" element={<FooterInfoManagement />} />
 
               {/* /admin/settings */}
               <Route path="settings" element={<Settings />} />

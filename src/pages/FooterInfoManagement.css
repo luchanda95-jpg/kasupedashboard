@@ -1,0 +1,198 @@
+/* =============== PAGE WRAPPER =============== */
+
+.footer-info-admin-page {
+  padding: 1.5rem 1.75rem;
+  background: #f9fafb;
+  min-height: 100%;
+}
+
+.footer-info-admin-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* =============== HEADER =============== */
+
+.footer-info-admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-info-admin-header h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.footer-info-admin-header p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  max-width: 560px;
+}
+
+/* =============== STATUS / ALERTS =============== */
+
+.footer-info-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.45rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-info-status-success {
+  background: #ecfdf3;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.footer-info-status-error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.footer-info-loading {
+  margin-top: 1.1rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* =============== FORM LAYOUT =============== */
+
+.footer-info-form {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+}
+
+/* two columns on larger screens */
+@media (min-width: 960px) {
+  .footer-info-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* make the action row span all columns */
+  .footer-info-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =============== BLOCKS (CARDS) =============== */
+
+.footer-info-block {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.footer-info-block h2 {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.4rem;
+}
+
+/* optional small description under title (if added later) */
+.footer-info-block p.footer-info-block-hint {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+/* =============== FIELDS =============== */
+
+.footer-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.4rem;
+}
+
+.footer-info-field label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.footer-info-field input,
+.footer-info-field textarea {
+  border-radius: 0.55rem;
+  border: 1px solid #d1d5db;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.85rem;
+  color: #111827;
+  background: #f9fafb;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.footer-info-field input:focus,
+.footer-info-field textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+  background: #ffffff;
+}
+
+.footer-info-field textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* =============== ACTIONS (BUTTON ROW) =============== */
+
+.footer-info-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.footer-info-actions button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  background: #111827;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+  transition: background 0.15s ease, transform 0.12s ease,
+    box-shadow 0.15s ease, opacity 0.12s ease;
+}
+
+.footer-info-actions button:hover:not(:disabled) {
+  background: #020617;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.45);
+}
+
+.footer-info-actions button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.35);
+}
+
+.footer-info-actions button:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Optional small icon style if you add an icon inside button */
+.footer-info-actions button span.footer-info-btn-icon {
+  font-size: 1rem;
+  line-height: 1;
+}

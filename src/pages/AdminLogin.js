@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
-const API_BASE = "https://kasuper-server.onrender.com"; // make sure this URL is correct
+const API_BASE = "https://kasuper-server-84g2.onrender.com"; // make sure this URL is correct
 
 function AdminLogin() {
   const navigate = useNavigate();

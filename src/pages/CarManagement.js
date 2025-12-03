@@ -5,8 +5,7 @@ import "./CarManagement.css";
 import { useAdminAuth } from "../context/AdminAuthContext";
 import { adminFetch } from "../utils/adminApi";
 
-const API_BASE = "https://kasuper-server.onrender.com";
-
+import { API_BASE } from "../utils/adminApi";
 const placeholderImg =
   "https://via.placeholder.com/120x80?text=Kasupe+Car";
 

@@ -1,5 +1,13 @@
 // src/utils/adminApi.js
-const API_BASE = "https://kasuper-server.onrender.com";
+
+// ✅ Production-ready API base.
+// - In production builds it will use your Render URL.
+// - In development, you can override with REACT_APP_API_BASE if you want.
+export const API_BASE =
+  process.env.REACT_APP_API_BASE ||
+  (process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://kasuper-server-84g2.onrender.com");
 
 /**
  * Wrapper around fetch for ADMIN calls.

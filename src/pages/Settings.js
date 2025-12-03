@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Settings.css";
 
-const API_BASE = "https://kasuper-server.onrender.com";
+const API_BASE = "https://kasuper-server-84g2.onrender.com";
 
 function Settings() {
   const token = localStorage.getItem("kasupe_admin_token");

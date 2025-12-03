@@ -16,6 +16,23 @@ const navItems = [
   { to: "/admin/settings", label: "Settings", icon: assets.settingsIcon },
   { to: "/admin/testimonials", label: "Testimonials", icon: assets.reviewIcon },
   { to: "/admin/newsletter", label: "Newsletter", icon: assets.mailIcon },
+  
+  { to: "/admin", label: "Dashboard", icon: assets.dashboardIcon },
+  { to: "/admin/add-car", label: "Add Car", icon: assets.addIcon },
+  { to: "/admin/manage-cars", label: "Manage Cars", icon: assets.car_icon },
+  {
+    to: "/admin/manage-bookings",
+    label: "Manage Bookings",
+    icon: assets.listIcon,
+  },
+  { to: "/admin/blog", label: "Blog Management", icon: assets.edit_icon },
+  { to: "/admin/testimonials", label: "Testimonials", icon: assets.reviewIcon },
+  { to: "/admin/newsletter", label: "Newsletter", icon: assets.mailIcon },
+  // 👇 NEW
+  { to: "/admin/footer-info", label: "Footer & Legal" },
+  { to: "/admin/settings", label: "Settings", icon: assets.settingsIcon },
+
+
 ];
 
 function Sidebar() {
